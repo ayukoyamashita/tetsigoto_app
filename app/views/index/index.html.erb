@@ -1,18 +1,11 @@
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<style>
-		#picture {
-			max-width: 100%;
-		}
-	</style>
-</head>
-<body>
-<input type="text" placeholder="読み取り内容" id="qrDecode">
-<input type="file" accept="image/*" capture="environment" id="camera">
-<canvas id="picture" width="300" height="200"></canvas>
+<div class="container stampCard">
+	<input type="file" accept="image/*" capture="environment" id="camera">
+	<div class="stampCard_picture">
+		<canvas id="picture" width="200" height="200"></canvas>
+		<p class="stampCard_picture_text">
+			<input type="text" id="qrDecode">
+		</p>
+	</div>
+</div>
 
 <%= javascript_pack_tag 'common' %>
-</body>
-</html>
