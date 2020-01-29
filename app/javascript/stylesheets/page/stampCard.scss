@@ -12,12 +12,13 @@
     justify-content: space-between;
     canvas {
       width: 30%;
+      height: 30%;
       background-color: #ccc;
     }
     &_text {
       width: 65%;
       input {
-        width: 100%;
+        width: 90%;
         background-color: $color-bg;
       }
     }
