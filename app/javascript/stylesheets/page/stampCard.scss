@@ -5,11 +5,15 @@
   #camera {
 
   }
-  
+
   &_picture {
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
+    border: 2px solid $color-accent;
+    border-radius: 4px;
+    padding: 20px;
+
     canvas {
       width: 30%;
       height: 30%;
@@ -17,9 +21,11 @@
     }
     &_text {
       width: 65%;
-      input {
-        width: 90%;
-        background-color: $color-bg;
+      .el_success, .el_fail {
+        display: none;
+      }
+      .el_success.is-show, .el_fail.is-show {
+        display: block;
       }
     }
   }
@@ -43,6 +49,24 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+    }
+  }
+
+  &_card {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    li {
+      width: 30%;
+      margin-top: 10px;
+      img {
+        width: 100%;
+        border-radius: 50%;
+        filter: grayscale(100%);
+        opacity: .5;
+      }
     }
   }
 }

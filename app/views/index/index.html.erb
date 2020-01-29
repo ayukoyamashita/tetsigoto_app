@@ -1,11 +1,19 @@
 <div class="container stampCard">
 	<input type="file" accept="image/*" capture="environment" id="camera">
+	<input type="hidden" id="qrDecode">
 	<div class="stampCard_picture">
 		<canvas id="picture" width="200" height="200"></canvas>
 		<p class="stampCard_picture_text">
-			<input type="text" id="qrDecode">
+			<span class="el_success">読み込み成功！<br>スタンプゲット！</span>
+			<span class="el_fail">読み込み失敗<br>もう一度お試しください</span>
 		</p>
 	</div>
+
+	<ul class="stampCard_card">
+		<%- (1..30).each do |i| %>
+			<li><%= image_tag asset_path 'miffy.png' %></li>
+		<%- end %>
+	</ul>
 </div>
 
 <%= javascript_pack_tag 'common' %>
