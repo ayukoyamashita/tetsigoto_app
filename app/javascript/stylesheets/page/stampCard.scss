@@ -2,55 +2,6 @@
 
 .stampCard {
   padding: 30px 0;
-  #camera {
-
-  }
-
-  &_picture {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    border: 2px solid $color-accent;
-    border-radius: 4px;
-    padding: 20px;
-
-    canvas {
-      width: 30%;
-      height: 30%;
-      background-color: #ccc;
-    }
-    &_text {
-      width: 65%;
-      .el_success, .el_fail {
-        display: none;
-      }
-      .el_success.is-show, .el_fail.is-show {
-        display: block;
-      }
-    }
-  }
-
-  #camera {
-    background-color: $color-accent;
-    color: #fff;
-    width: 100%;
-    margin: auto;
-    display: block;
-    font-size: 0;
-    height: 40px;
-    position: relative;
-    border-radius: $radius;
-
-    &::before {
-      content: 'QRコードを読む';
-      display: block;
-      font-size: 16px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
 
   &_card {
     list-style: none;

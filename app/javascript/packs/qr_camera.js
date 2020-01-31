@@ -1,13 +1,17 @@
-const camera = document.getElementById('camera');
-const canvas = document.getElementById("picture");
-const qrDecode = document.getElementById("qrDecode");
-const success = document.querySelector('.stampCard_picture_text .el_success');
-const fail = document.querySelector('.stampCard_picture_text .el_fail');
+let camera, canvas, qrDecode, success, fail, ctx;
 
-const ctx = canvas.getContext("2d");
+window.onload = function () {
+	camera = document.querySelector('input[data-camera]');
+	canvas = document.querySelector("[data-qr-result] canvas");
+	qrDecode = document.querySelector("[data-qr-decord]");
+	success = document.querySelector('[data-qr-result] .el_success');
+	fail = document.querySelector('[data-qr-result] .el_fail');
 
-camera.onchange = openQRCamera;
-camera.onclick = resetCanvas;
+	ctx = canvas.getContext("2d");
+
+	camera.onchange = openQRCamera;
+	camera.onclick = resetCanvas;
+};
 
 function openQRCamera() {
 	let reader = new FileReader();
@@ -35,6 +39,26 @@ function openQRCamera() {
 		image.src = evt.target.result;
 	};
 	reader.readAsDataURL(camera.files[0]);
+}
+
+function readQRCode(canvas, ctx) {
+	let {width, height} = getThumbnailSize(image);
+	canvas.setAttribute("width", width);
+	canvas.setAttribute("height", height);
+
+	// カメラの映像をCanvasに複写
+	ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, width, height);
+
+	// QRコード読み取り
+	const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+	const code = jsQR(imageData.data, canvas.width, canvas.height);
+
+	if (code == null) {
+		fail.classList.add('is-show');
+	} else {
+		success.classList.add('is-show');
+		qrDecode.value = code.data;
+	}
 }
 
 function resetCanvas() {
