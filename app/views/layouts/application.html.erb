@@ -15,8 +15,13 @@
 <body>
 <header class="header">
 	SOL STAMP
+	<%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
 </header>
-<%= yield %>
+<div class="container">
+	<%= notice %>
+	<%= alert %>
+	<%= yield %>
+</div>
 <footer class="footer">
 	SOL STAMP
 </footer>
