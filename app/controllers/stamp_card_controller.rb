@@ -1,5 +1,4 @@
-class StampCardController < ApplicationController
-	before_action :authenticate_user!
+class StampCardController < BaseController
 
 	def index
 
