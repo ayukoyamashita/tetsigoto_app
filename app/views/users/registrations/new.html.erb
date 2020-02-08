@@ -1,29 +1,42 @@
-<h2>Sign up</h2>
+<h2 class="cmn-title">アカウント登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+	<%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+	<dl class="cmn-form">
+		<dt>
+			<%= f.label :email %>
+		</dt>
+		<dd>
+			<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+		</dd>
+	</dl>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+	<dl class="cmn-form">
+		<dt>
+			<%= f.label :password %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+			<% if @minimum_password_length %>
+				<em>(<%= @minimum_password_length %> characters minimum)</em>
+			<% end %>
+		</dt>
+		<dd>
+			<%= f.password_field :password, autocomplete: "new-password" %>
+		</dd>
+	</dl>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+	<dl class="cmn-form">
+		<dt>
+			<%= f.label :password_confirmation %>
+		</dt>
+		<dd>
+			<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+		</dd>
+	</dl>
+
+	<div class="mgt-20">
+		<%= f.submit "送信", class: 'cmn-btn' %>
+	</div>
 <% end %>
 
 <%= render "users/shared/links" %>

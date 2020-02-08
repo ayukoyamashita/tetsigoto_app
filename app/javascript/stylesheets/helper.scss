@@ -1,0 +1,20 @@
+$height: 5;
+@while $height < 70 {
+  .mgt-#{$height} {
+    margin-top: $height + px;
+  }
+  .pdt-#{$height} {
+    padding-top: $height + px;
+  }
+  .mgb-#{$height} {
+    margin-bottom: $height + px;
+  }
+  .pdb-#{$height} {
+    margin-bottom: $height + px;
+  }
+  $height: $height + 5;
+}
+
+.alignCenter {
+  text-align: center;
+}

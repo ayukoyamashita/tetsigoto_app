@@ -15,7 +15,6 @@
 <body>
 <header class="header">
 	<h1><a href="/">SOL STAMP</a></h1>
-	<%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'header_logout' %>
 </header>
 <div class="container">
 	<%- if notice.present? %>
@@ -26,8 +25,5 @@
 	<%- end %>
 	<%= yield %>
 </div>
-<footer class="footer">
-	SOL STAMP
-</footer>
 </body>
 </html>

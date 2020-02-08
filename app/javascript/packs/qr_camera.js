@@ -7,10 +7,14 @@ window.onload = function () {
 	success = document.querySelector('[data-qr-result] .el_success');
 	fail = document.querySelector('[data-qr-result] .el_fail');
 
-	ctx = canvas.getContext("2d");
+	if (canvas) {
+		ctx = canvas.getContext("2d");
+	}
 
-	camera.onchange = openQRCamera;
-	camera.onclick = resetCanvas;
+	if (camera) {
+		camera.onchange = openQRCamera;
+		camera.onclick = resetCanvas;
+	}
 };
 
 function openQRCamera() {
