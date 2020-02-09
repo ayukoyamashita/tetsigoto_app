@@ -18,12 +18,12 @@
 
 	<dl class="cmn-form">
 		<dt>
-			<%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+			<%= f.label :password %> （変更する場合のみ入力）
 		</dt>
 		<dd>
 			<%= f.password_field :password, autocomplete: "new-password" %>
 			<% if @minimum_password_length %>
-				<em><%= @minimum_password_length %> characters minimum</em>
+				<%= @minimum_password_length %>文字以上
 			<% end %>
 		</dd>
 	</dl>
@@ -39,7 +39,7 @@
 
 	<dl class="cmn-form">
 		<dt>
-			<%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+			<%= f.label :current_password %>
 		</dt>
 		<dd>
 			<%= f.password_field :current_password, autocomplete: "current-password" %>
@@ -54,5 +54,5 @@
 <h3 class="mgt-50">アカウントの削除</h3>
 <p>アカウントを削除し、本サービスから退会します。</p>
 <div class="mgb-20">
-	<%= button_to "削除", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete, class: 'cmn-btn' %>
+	<%= button_to "削除", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete, class: 'cmn-btn is-gray is-short' %>
 </div>
