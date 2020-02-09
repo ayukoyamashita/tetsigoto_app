@@ -6,7 +6,7 @@
 
 	<dl class="cmn-form">
 		<dt>
-			<%= f.label :password, "New password" %>
+			<%= f.label :password, "新しいパスワード" %>
 			<% if @minimum_password_length %>
 				(<%= @minimum_password_length %>文字以上)
 			<% end %>
@@ -18,7 +18,7 @@
 
 	<dl class="cmn-form">
 		<dt>
-			<%= f.label :password_confirmation, "Confirm new password" %>
+			<%= f.label :password_confirmation, "確認用パスワード" %>
 		</dt>
 		<dd>
 			<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
