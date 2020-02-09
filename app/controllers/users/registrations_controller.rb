@@ -64,7 +64,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 	private
 	def resolve_layout
-		if action_name == 'new'
+		if action_name == 'new' || action_name == 'create'
 			'login'
 		else
 			'application'

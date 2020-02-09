@@ -15,10 +15,7 @@
 	<dl class="cmn-form">
 		<dt>
 			<%= f.label :password %>
-
-			<% if @minimum_password_length %>
-				<em>(<%= @minimum_password_length %> characters minimum)</em>
-			<% end %>
+			<% if @minimum_password_length %>(<%= @minimum_password_length %>文字以上)<% end %>
 		</dt>
 		<dd>
 			<%= f.password_field :password, autocomplete: "new-password" %>
