@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-	root 'index#index'
+
+	devise_scope :user do
+		authenticated :user do
+			root :to => 'stamp_card#index', as: :authenticated_root
+		end
+		unauthenticated :user do
+			root :to => 'users/sessions#new', as: :unauthenticated_root
+		end
+	end
 
 	devise_for :users, controllers: {
 			sessions: 'users/sessions',
