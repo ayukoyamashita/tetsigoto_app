@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 			sessions: 'managers/sessions',
 			passwords: 'managers/passwords',
 			registrations: 'managers/registrations',
-			confirmations: 'managers/confirmations'
+			confirmations: 'managers/confirmations',
+			invitations: 'managers/invitations'
 	}
 
 	devise_scope :user do
