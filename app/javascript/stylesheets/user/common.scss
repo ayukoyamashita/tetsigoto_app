@@ -1,0 +1,166 @@
+.container {
+  width: 90%;
+  max-width: 400px;
+  margin: 80px auto 0;
+}
+
+.header {
+  background-color: $color-base;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  h1 {
+    margin: 0;
+    font-size: 20px;
+    text-align: center;
+  }
+  a {
+    color: #fff;
+  }
+  #nav-drawer {
+    position: absolute;
+    top: 0;
+    left: 10px;
+  }
+
+  /*チェックボックス等は非表示に*/
+  .nav-unshown {
+    display:none;
+  }
+
+  /*アイコンのスペース*/
+  #nav-open {
+    display: inline-block;
+    width: 30px;
+    height: 22px;
+    vertical-align: middle;
+  }
+
+  /*ハンバーガーアイコンをCSSだけで表現*/
+  #nav-open span, #nav-open span:before, #nav-open span:after {
+    position: absolute;
+    height: 3px;/*線の太さ*/
+    width: 25px;/*長さ*/
+    border-radius: 3px;
+    background: #fff;
+    display: block;
+    content: '';
+    cursor: pointer;
+  }
+  #nav-open span:before {
+    bottom: -8px;
+  }
+  #nav-open span:after {
+    bottom: -16px;
+  }
+
+  /*閉じる用の薄黒カバー*/
+  .nav-close-bg {
+    display: none;/*はじめは隠しておく*/
+    position: fixed;
+    z-index: 99;
+    top: 0;/*全体に広がるように*/
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    transition: .3s ease-in-out;
+  }
+
+  /*中身*/
+  #nav-content {
+    background-color: $color-base;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;/*最前面に*/
+    width: 90%;/*右側に隙間を作る*/
+    max-width: 330px;/*最大幅*/
+    height: 100%;
+    transition: .3s ease-in-out;/*滑らかに表示*/
+    transform: translateX(-105%);/*左に隠しておく*/
+    padding: 0 20px 20px;
+    ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+    }
+  }
+
+  /*チェックが入ったらもろもろ表示*/
+  #nav-input:checked ~ .nav-close-bg {
+    display: block;/*カバーを表示*/
+    opacity: .5;
+  }
+
+  #nav-input:checked ~ #nav-content {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);/*中身を表示*/
+    box-shadow: 6px 0 25px rgba(0,0,0,.15);
+  }
+
+  .nav-close {
+    font-size: 30px;
+    color: #fff;
+  }
+}
+
+.footer {
+  background-color: $color-accent;
+  color: #fff;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.cmn-camera {
+  background-color: $color-accent;
+  color: #fff;
+  width: 100%;
+  margin: auto;
+  display: block;
+  font-size: 0;
+  height: 40px;
+  position: relative;
+  border-radius: $radius;
+
+  &::before {
+    content: 'QRコードを読む';
+    display: block;
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.cmn-QRCode {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid $color-accent;
+  border-radius: 4px;
+  padding: 20px;
+
+  canvas {
+    width: 30%;
+    height: 30%;
+    background-color: #ccc;
+  }
+  &_text {
+    width: 65%;
+    .el_success, .el_fail {
+      display: none;
+    }
+    .el_success.is-show, .el_fail.is-show {
+      display: block;
+    }
+  }
+}

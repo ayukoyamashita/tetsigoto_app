@@ -1,8 +1,9 @@
 @import "~normalize.css";
-@import "manager/variable";
+@import "user/variable";
 @import "mixin";
 @import "base";
 @import "helper";
 @import "parts";
 @import "form";
-@import "manager/common";
+@import "user/common";
+@import "user/page/stampCard";

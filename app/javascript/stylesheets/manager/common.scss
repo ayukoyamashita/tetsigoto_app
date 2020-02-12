@@ -25,7 +25,7 @@
   #nav-drawer {
     position: absolute;
     top: 0;
-    right: 10px;
+    left: 10px;
   }
 
   /*チェックボックス等は非表示に*/
@@ -79,13 +79,13 @@
     overflow: auto;
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     z-index: 9999;/*最前面に*/
     width: 90%;/*右側に隙間を作る*/
     max-width: 330px;/*最大幅*/
     height: 100%;
     transition: .3s ease-in-out;/*滑らかに表示*/
-    transform: translateX(105%);/*左に隠しておく*/
+    transform: translateX(-105%);/*左に隠しておく*/
     padding: 0 20px 20px;
     ul {
       list-style: none;
@@ -163,45 +163,4 @@
       display: block;
     }
   }
-}
-
-.cmn-btn {
-  background-color: $color-accent;
-  color: #fff;
-  width: 100%;
-  margin: auto;
-  display: block;
-  height: 40px;
-  border-radius: $radius;
-  &.is-gray {
-    background-color: #c1c1c1;
-  }
-  &.is-short {
-    width: 50%;
-  }
-}
-
-.cmn-title {
-  font-size: 20px;
-}
-
-.cmn-notice, .cmn-alert {
-  border-radius: $radius;
-  line-height: 1.4;
-  padding: 10px;
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-}
-
-.cmn-notice {
-  border: 2px solid #00c0d4;
-  background-color: #e0f9fb;
-}
-
-.cmn-alert {
-  border: 2px solid #ff1a1a;
-  background-color: #ffdacf;
 }
