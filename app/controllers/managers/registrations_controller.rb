@@ -2,7 +2,10 @@
 
 class Managers::RegistrationsController < Devise::RegistrationsController
 	layout :resolve_layout
-  # before_action :configure_sign_up_params, only: [:create]
+
+	before_action :guard_signup!, only: %i[cancel new create]
+
+	# before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -51,16 +54,16 @@ class Managers::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_update_path_for(resource)
+		managers_path
+  end
 
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
 	private
+
+	def guard_signup!
+		raise ActionController::RoutingError, 'NOT FOUND'
+	end
+
 	def resolve_layout
 		if action_name == 'new' || action_name == 'create'
 			'managers/login'
