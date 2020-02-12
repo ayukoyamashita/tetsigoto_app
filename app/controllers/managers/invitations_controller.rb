@@ -1,9 +1,8 @@
 class Managers::InvitationsController < Devise::InvitationsController
 	layout :resolve_layout
 
-	def create
-		super
-		redirect_to new_manager_invitation_path
+	def after_accept_path_for（resource）
+		managers_path
 	end
 
 	private
