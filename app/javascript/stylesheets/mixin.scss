@@ -1,5 +1,3 @@
-@import "variable.scss";
-
 @mixin font-size($size, $base: 16) {
   font-size: $size / $base + rem;
 }

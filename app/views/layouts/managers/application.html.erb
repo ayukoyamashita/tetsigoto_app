@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SOL STAMP - 管理画面</title>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+
+	<%= stylesheet_pack_tag 'application-manager', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_pack_tag 'application-manager', 'data-turbolinks-track': 'reload' %>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<body>
+<header class="header">
+	<h1><%= link_to "SOL STAMP 管理画面", managers_path %></h1>
+	<div id="nav-drawer">
+		<input id="nav-input" type="checkbox" class="nav-unshown">
+		<label id="nav-open" for="nav-input"><span></span></label>
+		<label class="nav-unshown nav-close-bg" for="nav-input"></label>
+		<nav id="nav-content">
+			<label class="nav-close" for="nav-input">×</label>
+			<ul>
+				<li><%= link_to 'アカウント編集', edit_manager_registration_path %></li>
+				<li><%= link_to 'ログアウト', destroy_manager_session_path, method: :delete %></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+<div class="container">
+	<%- if notice.present? %>
+		<p class="cmn-notice"><%= notice %></p>
+	<%- end %>
+	<%- if alert.present? %>
+		<p class="cmn-alert"><%= alert %></p>
+	<%- end %>
+	<%= yield %>
+</div>
+<footer class="footer">
+	SOL STAMP
+</footer>
+</body>
+</html>

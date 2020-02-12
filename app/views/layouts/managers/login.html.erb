@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SOL STAMP - 管理画面</title>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+
+	<%= stylesheet_pack_tag 'application-manager', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_pack_tag 'application-manager', 'data-turbolinks-track': 'reload' %>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<body>
+<header class="header">
+	<h1><%= link_to "SOL STAMP 管理画面", new_manager_session_path %></h1>
+</header>
+<div class="container">
+	<%- if notice.present? %>
+		<p class="cmn-notice"><%= notice %></p>
+	<%- end %>
+	<%- if alert.present? %>
+		<p class="cmn-alert"><%= alert %></p>
+	<%- end %>
+	<%= yield %>
+</div>
+</body>
+</html>

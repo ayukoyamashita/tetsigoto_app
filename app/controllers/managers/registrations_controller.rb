@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Managers::RegistrationsController < Devise::RegistrationsController
+	layout :resolve_layout
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -59,4 +60,12 @@ class Managers::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+	private
+	def resolve_layout
+		if action_name == 'new' || action_name == 'create'
+			'managers/login'
+		else
+			'managers/application'
+		end
+	end
 end

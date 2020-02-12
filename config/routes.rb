@@ -1,20 +1,11 @@
 Rails.application.routes.draw do
-	#
-	# devise_scope :manager do
-	# 	authenticated :manager do
-	# 		root :to => 'stamp_card#index', as: :manager_authenticated_root
-	# 	end
-	# 	unauthenticated :manager do
-	# 		root :to => 'users/sessions#new', as: :manager_unauthenticated_root
-	# 	end
-	# end
-	#
-	# devise_for :managers, controllers: {
-	# 		sessions: 'managers/sessions',
-	# 		passwords: 'managers/passwords',
-	# 		registrations: 'managers/registrations',
-	# 		confirmations: 'managers/confirmations'
-	# }
+
+	devise_for :managers, controllers: {
+			sessions: 'managers/sessions',
+			passwords: 'managers/passwords',
+			registrations: 'managers/registrations',
+			confirmations: 'managers/confirmations'
+	}
 
 	devise_scope :user do
 		authenticated :user do
@@ -31,6 +22,10 @@ Rails.application.routes.draw do
 			registrations: 'users/registrations',
 			confirmations: 'users/confirmations'
 	}
+
+	namespace :managers do
+		get '/', to: 'index#index'
+	end
 
 	namespace :users do
 		get 'stamp_card', to: 'stamp_card#index'
