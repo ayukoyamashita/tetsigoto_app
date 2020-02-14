@@ -1,9 +1,18 @@
-
 .stampCard {
+
+  &_mainImage {
+    width: 110%;
+    margin: -20px -5% 0;
+    img {
+      width: 100%;
+    }
+  }
 
   &_card {
     list-style: none;
-    padding: 0;
+    background-color: #fff;
+    padding: 5%;
+    border-radius: $radius;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

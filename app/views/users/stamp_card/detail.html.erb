@@ -1,0 +1,15 @@
+<div class="stampCard">
+	<p class="stampCard_mainImage">
+		<img src="https://placehold.jp/600x400.png">
+	</p>
+	<h2>ハロウィーンスタンプラリー2020</h2>
+	<p>スタンプラリーの概要です。社内のどこかに隠されているQRコードを読み取るとスタンプゲット。３個集めると抽選券獲得！５個集めるとボーナス！</p>
+	<input type="file" accept="image/*" capture="environment" class="cmn-camera" data-camera="true">
+	<input type="hidden" data-qr-decord="true">
+
+	<ul class="stampCard_card">
+		<%- (1..12).each do |i| %>
+			<li><%= image_tag asset_path 'miffy.png' %></li>
+		<%- end %>
+	</ul>
+</div>

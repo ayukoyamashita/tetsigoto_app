@@ -30,7 +30,7 @@
 
   /*チェックボックス等は非表示に*/
   .nav-unshown {
-    display:none;
+    display: none;
   }
 
   /*アイコンのスペース*/
@@ -44,8 +44,8 @@
   /*ハンバーガーアイコンをCSSだけで表現*/
   #nav-open span, #nav-open span:before, #nav-open span:after {
     position: absolute;
-    height: 3px;/*線の太さ*/
-    width: 25px;/*長さ*/
+    height: 3px; /*線の太さ*/
+    width: 25px; /*長さ*/
     border-radius: 3px;
     background: #fff;
     display: block;
@@ -61,10 +61,10 @@
 
   /*閉じる用の薄黒カバー*/
   .nav-close-bg {
-    display: none;/*はじめは隠しておく*/
+    display: none; /*はじめは隠しておく*/
     position: fixed;
     z-index: 99;
-    top: 0;/*全体に広がるように*/
+    top: 0; /*全体に広がるように*/
     left: 0;
     width: 100%;
     height: 100%;
@@ -80,12 +80,12 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 9999;/*最前面に*/
-    width: 90%;/*右側に隙間を作る*/
-    max-width: 330px;/*最大幅*/
+    z-index: 9999; /*最前面に*/
+    width: 90%; /*右側に隙間を作る*/
+    max-width: 330px; /*最大幅*/
     height: 100%;
-    transition: .3s ease-in-out;/*滑らかに表示*/
-    transform: translateX(-105%);/*左に隠しておく*/
+    transition: .3s ease-in-out; /*滑らかに表示*/
+    transform: translateX(-105%); /*左に隠しておく*/
     padding: 0 20px 20px;
     ul {
       list-style: none;
@@ -96,14 +96,14 @@
 
   /*チェックが入ったらもろもろ表示*/
   #nav-input:checked ~ .nav-close-bg {
-    display: block;/*カバーを表示*/
+    display: block; /*カバーを表示*/
     opacity: .5;
   }
 
   #nav-input:checked ~ #nav-content {
     -webkit-transform: translateX(0%);
-    transform: translateX(0%);/*中身を表示*/
-    box-shadow: 6px 0 25px rgba(0,0,0,.15);
+    transform: translateX(0%); /*中身を表示*/
+    box-shadow: 6px 0 25px rgba(0, 0, 0, .15);
   }
 
   .nav-close {
@@ -117,6 +117,7 @@
   color: #fff;
   text-align: center;
   padding: 30px 0;
+  margin-top: 30px;
 }
 
 .cmn-camera {
@@ -141,21 +142,32 @@
   }
 }
 
-.cmn-QRCode {
-  margin-top: 30px;
-  display: flex;
-  justify-content: space-between;
-  border: 2px solid $color-accent;
-  border-radius: 4px;
-  padding: 20px;
-
-  canvas {
-    width: 30%;
-    height: 30%;
-    background-color: #ccc;
+.qrReadedDialog {
+  &:not(.is-show) {
+    display: none;
   }
-  &_text {
-    width: 65%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 1000;
+
+  &_inner {
+    background-color: #fff;
+    width: 90%;
+    margin: 100px auto 0;
+    border-radius: $radius;
+    padding: 5%;
+    text-align: center;
+
+    canvas {
+      width: 200px;
+      height: 200px;
+      background-color: #ccc;
+    }
+
     .el_success, .el_fail {
       display: none;
     }

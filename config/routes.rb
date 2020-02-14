@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 	end
 
 	namespace :users do
-		get 'stamp_card', to: 'stamp_card#index'
+		get 'stamp_cards', to: 'stamp_card#index'
+		get 'stamp_card', to: 'stamp_card#detail'
 	end
 end

@@ -1,17 +1,49 @@
-<div class="stampCard">
-	<input type="file" accept="image/*" capture="environment" class="cmn-camera" data-camera="true">
-	<input type="hidden" data-qr-decord="true">
-	<div class="cmn-QRCode" data-qr-result="true">
-		<canvas width="200" height="200"></canvas>
-		<p class="cmn-QRCode_text">
-			<span class="el_success">読み込み成功！<br>スタンプゲット！</span>
-			<span class="el_fail">読み込み失敗<br>もう一度お試しください</span>
-		</p>
-	</div>
+<div class="stampCardList">
+	<h2 class="stampCardList_title">開催中</h2>
+	<ul class="stampCardList_card">
+		<li>
+			<%= link_to users_stamp_card_path do %>
+				<img src="https://placehold.jp/300x300.png">
+				<p>スタンプカードのタイトル</p>
+			<%- end %>
+		</li>
+	</ul>
 
-	<ul class="stampCard_card">
-		<%- (1..30).each do |i| %>
-			<li><%= image_tag asset_path 'miffy.png' %></li>
-		<%- end %>
+	<h2 class="stampCardList_title mgt-60">常設</h2>
+	<ul class="stampCardList_card">
+		<li>
+			<%= link_to users_stamp_card_path do %>
+				<img src="https://placehold.jp/300x300.png">
+				<p>スタンプカードのタイトル</p>
+			<%- end %>
+		</li>
+	</ul>
+
+	<h2 class="stampCardList_title mgt-60">アーカイブ</h2>
+	<ul class="stampCardList_card is-slim">
+		<li>
+			<%= link_to users_stamp_card_path do %>
+				<img src="https://placehold.jp/300x300.png">
+				<p>スタンプカードのタイトル</p>
+			<%- end %>
+		</li>
+		<li>
+			<%= link_to users_stamp_card_path do %>
+				<img src="https://placehold.jp/300x300.png">
+				<p>スタンプカードのタイトル</p>
+			<%- end %>
+		</li>
+		<li>
+			<%= link_to users_stamp_card_path do %>
+				<img src="https://placehold.jp/300x300.png">
+				<p>スタンプカードのタイトル</p>
+			<%- end %>
+		</li>
+		<li>
+			<%= link_to users_stamp_card_path do %>
+				<img src="https://placehold.jp/300x300.png">
+				<p>スタンプカードのタイトル</p>
+			<%- end %>
+		</li>
 	</ul>
 </div>
