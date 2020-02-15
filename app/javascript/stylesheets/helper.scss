@@ -1,16 +1,16 @@
 $height: 5;
 @while $height < 70 {
   .mgt-#{$height} {
-    margin-top: $height + px;
+    margin-top: $height + px !important;
   }
   .pdt-#{$height} {
-    padding-top: $height + px;
+    padding-top: $height + px !important;
   }
   .mgb-#{$height} {
-    margin-bottom: $height + px;
+    margin-bottom: $height + px !important;
   }
   .pdb-#{$height} {
-    margin-bottom: $height + px;
+    margin-bottom: $height + px !important;
   }
   $height: $height + 5;
 }

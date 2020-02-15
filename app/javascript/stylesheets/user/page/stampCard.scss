@@ -19,11 +19,16 @@
     li {
       width: 30%;
       margin-top: 10px;
+
+      &:not(.is-stamped) {
+        img {
+          filter: grayscale(100%);
+          opacity: .5;
+        }
+      }
       img {
         width: 100%;
         border-radius: 50%;
-        filter: grayscale(100%);
-        opacity: .5;
       }
     }
   }

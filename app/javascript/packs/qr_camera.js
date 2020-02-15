@@ -1,4 +1,4 @@
-let camera, canvas, qrDecode, success, fail, ctx, qrReadedDialog;
+let camera, canvas, qrDecode, success, fail, ctx, qrReadedDialog, qrReadedDialogBtn;
 
 window.onload = function () {
 	camera = document.querySelector('input[data-camera]');
@@ -7,6 +7,7 @@ window.onload = function () {
 	success = document.querySelector('[data-qr-result] .el_success');
 	fail = document.querySelector('[data-qr-result] .el_fail');
 	qrReadedDialog = document.querySelector('.qrReadedDialog');
+	qrReadedDialogBtn = document.querySelector('.qrReadedDialog button');
 
 	if (canvas) {
 		ctx = canvas.getContext("2d");
@@ -15,7 +16,8 @@ window.onload = function () {
 	if (camera) {
 		camera.onchange = openQRCamera;
 		camera.onclick = resetCanvas;
-		qrReadedDialog.onclick = hideQrDialog;
+		//qrReadedDialog.onclick = hideQrDialog;
+		qrReadedDialogBtn.onclick = linkToStampCard;
 	}
 };
 
@@ -94,4 +96,9 @@ function getThumbnailSize(image) {
 
 function hideQrDialog() {
 	qrReadedDialog.classList.remove('is-show');
+}
+
+function linkToStampCard() {
+	hideQrDialog();
+	location.href = '/users/stamp_card#stampCard'
 }
