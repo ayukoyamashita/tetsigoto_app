@@ -118,6 +118,24 @@
   text-align: center;
   padding: 30px 0;
   margin-top: 30px;
+
+  input {
+    display: none;
+  }
+
+  &_camera {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: $color-base;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 28px;
+    border: 3px solid #fff;
+    line-height: 50px;
+  }
 }
 
 .cmn-camera {
@@ -126,19 +144,15 @@
   width: 100%;
   margin: auto;
   display: block;
-  font-size: 0;
   height: 40px;
   position: relative;
   border-radius: $radius;
+  text-align: center;
+  line-height: 40px;
+  font-weight: bold;
 
-  &::before {
-    content: 'QRコードを読む';
-    display: block;
-    font-size: 16px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  input {
+    display: none;
   }
 }
 
@@ -155,6 +169,7 @@
   z-index: 1000;
 
   &_inner {
+    position: relative;
     background-color: #fff;
     width: 90%;
     margin: 100px auto 0;
@@ -173,6 +188,20 @@
     }
     .el_success.is-show, .el_fail.is-show {
       display: block;
+    }
+
+    &_close {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 40px;
+      height: 40px;
+      background-color: $color-accent;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      color: #fff;
+      font-size: 28px;
+      line-height: 31px;
     }
   }
 }

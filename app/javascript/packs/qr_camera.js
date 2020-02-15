@@ -1,13 +1,14 @@
-let camera, canvas, qrDecode, success, fail, ctx, qrReadedDialog, qrReadedDialogBtn;
+let camera, canvas, qrDecode, success, fail, ctx, qrReadedDialog, qrReadedDialogLink, qrReadedDialogClose;
 
-window.onload = function () {
+document.addEventListener('turbolinks:load', () => {
 	camera = document.querySelector('input[data-camera]');
 	canvas = document.querySelector("[data-qr-result] canvas");
 	qrDecode = document.querySelector("[data-qr-decord]");
 	success = document.querySelector('[data-qr-result] .el_success');
 	fail = document.querySelector('[data-qr-result] .el_fail');
 	qrReadedDialog = document.querySelector('.qrReadedDialog');
-	qrReadedDialogBtn = document.querySelector('.qrReadedDialog button');
+	qrReadedDialogLink = document.querySelector('.qrReadedDialog .el_link');
+	qrReadedDialogClose = document.querySelectorAll('.qrReadedDialog .el_close');
 
 	if (canvas) {
 		ctx = canvas.getContext("2d");
@@ -16,10 +17,12 @@ window.onload = function () {
 	if (camera) {
 		camera.onchange = openQRCamera;
 		camera.onclick = resetCanvas;
-		//qrReadedDialog.onclick = hideQrDialog;
-		qrReadedDialogBtn.onclick = linkToStampCard;
+		qrReadedDialogLink.onclick = linkToStampCard;
+		qrReadedDialogClose.forEach(function(close) {
+			close.onclick = hideQrDialog;
+		});
 	}
-};
+});
 
 function openQRCamera() {
 	let reader = new FileReader();

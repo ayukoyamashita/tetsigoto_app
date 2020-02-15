@@ -1,4 +1,4 @@
-$height: 5;
+$height: 0;
 @while $height < 70 {
   .mgt-#{$height} {
     margin-top: $height + px !important;
@@ -10,7 +10,7 @@ $height: 5;
     margin-bottom: $height + px !important;
   }
   .pdb-#{$height} {
-    margin-bottom: $height + px !important;
+    padding-bottom: $height + px !important;
   }
   $height: $height + 5;
 }

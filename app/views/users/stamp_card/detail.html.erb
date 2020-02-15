@@ -8,11 +8,17 @@
 	<h3>開催期間</h3>
 	<p>2020/10/01〜2020/10/31</p>
 
-	<input type="file" accept="image/*" capture="environment" class="cmn-camera mgt-30" data-camera="true">
-	<input type="hidden" data-qr-decord="true">
+	<label class="cmn-camera mgt-30">
+		<i class="fas fa-camera"></i> QRコードを読む
+		<input type="file" accept="image/*" capture="environment" data-camera="true">
+		<input type="hidden" data-qr-decord="true">
+	</label>
 
 	<ul class="stampCard_card mgt-30" id="stampCard">
-		<li class="is-stamped"><%= image_tag asset_path 'miffy.png' %></li>
+		<li class="is-stamped">
+			<%= image_tag asset_path 'miffy.png' %>
+			<p class="stampCard_card_date">2/16</p>
+		</li>
 		<%- (1..30).each do |i| %>
 			<li><%= image_tag asset_path 'miffy.png' %></li>
 		<%- end %>

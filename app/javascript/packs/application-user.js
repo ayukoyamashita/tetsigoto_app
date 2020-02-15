@@ -8,6 +8,16 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jsqr")
+
+import fontawesome from '@fortawesome/fontawesome'
+import faSolid from '@fortawesome/fontawesome-free-solid'
+import faRegular from '@fortawesome/fontawesome-free-regular'
+import faBrands from '@fortawesome/fontawesome-free-brands'
+fontawesome.library.add(faSolid, faRegular, faBrands)
+document.addEventListener('turbolinks:load', () => {
+	fontawesome.dom.i2svg()
+})
+
 import "./qr_camera"
 import "../stylesheets/application-user"
 

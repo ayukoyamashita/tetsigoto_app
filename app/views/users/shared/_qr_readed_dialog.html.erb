@@ -4,9 +4,15 @@
 			<canvas width="200" height="200"></canvas>
 		</div>
 		<div data-qr-result="true">
-			<p class="el_success textBold">読み取り成功！スタンプゲット！</p>
-			<p class="el_fail textBold">読み取り失敗<br>もう一度お試しください。</p>
+			<div class="el_success">
+				<p class="textBold">読み取り成功！スタンプゲット！</p>
+				<button class="cmn-btn el_link is-baseColor">スタンプカードの確認</button>
+			</div>
+			<div class="el_fail">
+				<p class="textBold">読み取り失敗<br>もう一度お試しください。</p>
+				<button class="cmn-btn el_close">OK</button>
+			</div>
 		</div>
-		<button class="cmn-btn is-baseColor">確認</button>
+		<span class="qrReadedDialog_inner_close el_close">×</span>
 	</div>
 </div>

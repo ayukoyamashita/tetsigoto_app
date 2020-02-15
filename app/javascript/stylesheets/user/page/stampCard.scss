@@ -16,9 +16,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    &_date {
+      text-align: center;
+      @include font-size(12);
+      margin: 0;
+    }
+
     li {
       width: 30%;
       margin-top: 10px;
+      line-height: 1.2;
 
       &:not(.is-stamped) {
         img {
