@@ -12,34 +12,39 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 
-<body>
-<header class="header">
+<body class="managerWrapper">
+<aside class="sidemenu">
 	<h1><%= link_to "SOL STAMP 管理画面", managers_path %></h1>
-	<div id="nav-drawer">
-		<input id="nav-input" type="checkbox" class="nav-unshown">
-		<label id="nav-open" for="nav-input"><span></span></label>
-		<label class="nav-unshown nav-close-bg" for="nav-input"></label>
-		<nav id="nav-content">
-			<label class="nav-close" for="nav-input">×</label>
-			<ul>
-				<li><%= link_to 'アカウント編集', edit_manager_registration_path %></li>
-				<li><%= link_to '招待する', new_manager_invitation_path %></li>
-				<li><%= link_to 'ログアウト', destroy_manager_session_path, method: :delete %></li>
-			</ul>
-		</nav>
+	<nav>
+		<ul>
+			<li>スタンプカード
+				<ul>
+					<li>スタンプカード一覧</li>
+					<li>スタンプカード作成</li>
+				</ul>
+			</li>
+			<li>ユーザ管理
+				<ul>
+					<li>ユーザ一覧</li>
+					<li>管理者一覧</li>
+					<li><%= link_to 'アカウント編集', edit_manager_registration_path %></li>
+					<li><%= link_to '管理者を招待する', new_manager_invitation_path %></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<%= link_to 'ログアウト', destroy_manager_session_path, method: :delete, class: 'cmn-btn mgt-30' %>
+</aside>
+<main class="main">
+	<div class="container">
+		<%- if notice.present? %>
+			<p class="cmn-notice"><%= notice %></p>
+		<%- end %>
+		<%- if alert.present? %>
+			<p class="cmn-alert"><%= alert %></p>
+		<%- end %>
+		<%= yield %>
 	</div>
-</header>
-<div class="container">
-	<%- if notice.present? %>
-		<p class="cmn-notice"><%= notice %></p>
-	<%- end %>
-	<%- if alert.present? %>
-		<p class="cmn-alert"><%= alert %></p>
-	<%- end %>
-	<%= yield %>
-</div>
-<footer class="footer">
-	SOL STAMP
-</footer>
+</main>
 </body>
 </html>

@@ -6,6 +6,9 @@
   display: block;
   height: 40px;
   border-radius: $radius;
+  text-align: center;
+  line-height: 40px;
+
   &.is-baseColor {
     background-color: $color-base;
   }

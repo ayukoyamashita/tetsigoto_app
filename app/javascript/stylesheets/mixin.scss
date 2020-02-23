@@ -1,3 +1,19 @@
 @mixin font-size($size, $base: 16) {
   font-size: $size / $base + rem;
 }
+
+@mixin pc {
+  @media (min-width: ($width-pc + 1)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (min-width: ($width-tab + 1)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media (min-width: ($width-sp + 1)) {
+    @content;
+  }
+}
