@@ -8,6 +8,7 @@
   border-radius: $radius;
   text-align: center;
   line-height: 40px;
+  padding: 0 16px;
 
   &.is-baseColor {
     background-color: $color-base;
@@ -15,8 +16,31 @@
   &.is-gray {
     background-color: #c1c1c1;
   }
+  &.is-danger {
+    background-color: $color-danger;
+  }
   &.is-short {
     width: 50%;
+  }
+  &.is-inline {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    line-height: 2;
+  }
+
+  @include tab {
+    max-width: 300px;
+  }
+}
+
+.cmn-btnContainer {
+  .cmn-btn {
+    margin: 0 10px 0 0;
+    width: 200px;
+  }
+  &.col2 {
+    display: flex;
   }
 }
 
@@ -43,4 +67,27 @@
 .cmn-alert {
   border: 2px solid #ff1a1a;
   background-color: #ffdacf;
+}
+
+.cmn-table {
+  width: 100%;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  th {
+    background-color: #eee;
+  }
+  th, td {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    padding: 8px;
+  }
+}
+
+.cmn-tableResponsive {
+  overflow-x: auto;
+  width: 100%;
+  table {
+    min-width: 800px;
+  }
 }

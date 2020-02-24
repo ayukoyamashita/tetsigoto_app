@@ -1,0 +1,32 @@
+<h1 class="cmn-title">スタンプカード一覧</h1>
+
+<div class="cmn-btnContainer mgt-30">
+	<%= link_to '新規作成', new_managers_stamp_card_path, class: 'cmn-btn' %>
+</div>
+
+<div class="cmn-tableResponsive">
+	<table class="cmn-table mgt-30">
+		<thead>
+		<tr>
+			<th width="80">ID</th>
+			<th width="100">状態</th>
+			<th>名前</th>
+			<th width="250">操作</th>
+		</tr>
+		</thead>
+
+		<tbody>
+		<% @stamp_cards.each do |stamp_card| %>
+			<tr>
+				<td class="alignCenter"><%= stamp_card.id %></td>
+				<td class="alignCenter">開催中</td>
+				<td><%= link_to stamp_card.name, [:managers, stamp_card] %></td>
+				<td class="alignCenter">
+					<%= link_to '詳細', [:managers, stamp_card], class: 'cmn-btn is-inline' %>
+					<%= link_to '編集', edit_managers_stamp_card_path(stamp_card), class: 'cmn-btn is-inline' %>
+					<%= link_to '削除', [:managers, stamp_card], method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'cmn-btn is-inline is-danger' %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+</div>

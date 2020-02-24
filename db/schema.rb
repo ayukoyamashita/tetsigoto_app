@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_12_141651) do
+ActiveRecord::Schema.define(version: 2020_02_24_015645) do
 
   create_table "managers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 2020_02_12_141651) do
     t.index ["invited_by_id"], name: "index_managers_on_invited_by_id"
     t.index ["invited_by_type", "invited_by_id"], name: "index_managers_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_managers_on_reset_password_token", unique: true
+  end
+
+  create_table "stamp_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "count"
+    t.text "description"
+    t.date "start_at"
+    t.date "end_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

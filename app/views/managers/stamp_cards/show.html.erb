@@ -1,0 +1,21 @@
+<h1 class="cmn-title">スタンプカード詳細</h1>
+<dl class="cmn-form">
+	<dt>ID</dt>
+	<dd><%= @stamp_card.id %></dd>
+</dl>
+<dl class="cmn-form">
+	<dt>スタンプカード名</dt>
+	<dd><%= @stamp_card.name %></dd>
+</dl>
+<dl class="cmn-form">
+	<dt>説明文章</dt>
+	<dd><%= @stamp_card.description %></dd>
+</dl>
+<dl class="cmn-form">
+	<dt>開催期間</dt>
+	<dd><%= @stamp_card.start_at %>〜<%= @stamp_card.end_at %></dd>
+</dl>
+<div class="cmn-btnContainer col2 mgt-30">
+	<%= link_to '修正', edit_managers_stamp_card_path(@stamp_card), class: 'cmn-btn' %>
+	<%= link_to '戻る', managers_stamp_cards_path, class: 'cmn-btn' %>
+</div>

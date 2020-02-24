@@ -15,25 +15,31 @@
 <body class="managerWrapper">
 <aside class="sidemenu">
 	<h1><%= link_to "SOL STAMP 管理画面", managers_path %></h1>
-	<nav>
-		<ul>
-			<li>スタンプカード
-				<ul>
-					<li>スタンプカード一覧</li>
-					<li>スタンプカード作成</li>
-				</ul>
-			</li>
-			<li>ユーザ管理
-				<ul>
-					<li>ユーザ一覧</li>
-					<li>管理者一覧</li>
-					<li><%= link_to 'アカウント編集', edit_manager_registration_path %></li>
-					<li><%= link_to '管理者を招待する', new_manager_invitation_path %></li>
-				</ul>
-			</li>
-		</ul>
-	</nav>
-	<%= link_to 'ログアウト', destroy_manager_session_path, method: :delete, class: 'cmn-btn mgt-30' %>
+	<div id="nav-drawer">
+		<input id="nav-input" type="checkbox" class="nav-unshown">
+		<label id="nav-open" for="nav-input"><span></span></label>
+		<label class="nav-unshown nav-close-bg" for="nav-input"></label>
+		<nav id="nav-content">
+			<label class="nav-close" for="nav-input">×</label>
+			<ul>
+				<li>スタンプカード
+					<ul>
+						<li><%= link_to 'スタンプカード一覧', managers_stamp_cards_path %></li>
+						<li><%= link_to 'スタンプカード作成', new_managers_stamp_card_path %></li>
+					</ul>
+				</li>
+				<li>ユーザ管理
+					<ul>
+						<li>ユーザ一覧</li>
+						<li>管理者一覧</li>
+						<li><%= link_to 'アカウント編集', edit_manager_registration_path %></li>
+						<li><%= link_to '管理者を招待する', new_manager_invitation_path %></li>
+					</ul>
+				</li>
+			</ul>
+			<%= link_to 'ログアウト', destroy_manager_session_path, method: :delete, class: 'cmn-btn mgt-30' %>
+		</nav>
+	</div>
 </aside>
 <main class="main">
 	<div class="container">

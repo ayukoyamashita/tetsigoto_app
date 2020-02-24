@@ -1,0 +1,2 @@
+module Managers::StampCardsHelper
+end

@@ -1,0 +1,43 @@
+<%= form_with(model: [:managers, stamp_card], local: true) do |form| %>
+	<% if stamp_card.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(stamp_card.errors.count, "error") %> prohibited this stamp_card from being saved:</h2>
+
+			<ul>
+				<% stamp_card.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<dl class="cmn-form">
+		<dt>スタンプカード名</dt>
+		<dd>
+			<%= form.text_field :name %>
+		</dd>
+	</dl>
+	<dl class="cmn-form">
+		<dt>説明文章</dt>
+		<dd>
+			<%= form.text_area :description %>
+		</dd>
+	</dl>
+	<dl class="cmn-form">
+		<dt>スタンプ数</dt>
+		<dd>
+			<%= form.number_field :count, class: 'is-short' %>
+		</dd>
+	</dl>
+	<dl class="cmn-form">
+		<dt>開催期間</dt>
+		<dd>
+			<%= form.text_field :start_at, class: 'is-short' %> 〜
+			<%= form.text_field :end_at, class: 'is-short' %>
+		</dd>
+	</dl>
+
+	<div class="cmn-btnContainer col2 mgt-30">
+		<%= form.submit '保存する', class: 'cmn-btn' %>
+		<%= link_to 'キャンセル', managers_stamp_cards_path, class: 'cmn-btn' %>
+	</div>
+<% end %>
