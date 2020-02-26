@@ -1,0 +1,17 @@
+<h1 class="cmn-title">管理者詳細</h1>
+<dl class="cmn-form">
+	<dt>ID</dt>
+	<dd><%= @manager.id %></dd>
+</dl>
+<dl class="cmn-form">
+	<dt>メールアドレス</dt>
+	<dd><%= @manager.email %></dd>
+</dl>
+<dl class="cmn-form">
+	<dt>登録日時</dt>
+	<dd><%= @manager.created_at %></dd>
+</dl>
+
+<div class="cmn-btnContainer mgt-30">
+	<%= link_to '戻る', managers_managers_path, class: 'cmn-btn' %>
+</div>

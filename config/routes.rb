@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 		get '/', to: 'index#index'
 		resources :stamp_cards
 		resources :users, :only => [:index, :show]
+		resources :managers
 	end
 
 	namespace :users do

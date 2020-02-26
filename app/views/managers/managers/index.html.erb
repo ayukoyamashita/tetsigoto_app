@@ -1,0 +1,26 @@
+<h1 class="cmn-title">管理者一覧</h1>
+
+<div class="cmn-tableResponsive">
+	<table class="cmn-table mgt-30">
+		<thead>
+		<tr>
+			<th width="80">ID</th>
+			<th>メールアドレス</th>
+			<th width="200">操作</th>
+		</tr>
+		</thead>
+
+		<tbody>
+		<% @managers.each do |manager| %>
+			<tr>
+				<td class="alignCenter"><%= manager.id %></td>
+				<td><%= manager.email %></td>
+				<td class="alignCenter">
+					<%= link_to '詳細', [:managers, manager], class: 'cmn-btn is-inline' %>
+					<%= link_to '削除', [:managers, manager], method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'cmn-btn is-danger is-inline' %>
+				</td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+</div>
