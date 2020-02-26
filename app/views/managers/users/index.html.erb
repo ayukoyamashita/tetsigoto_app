@@ -1,0 +1,23 @@
+<h1 class="cmn-title">ユーザ一覧</h1>
+
+<div class="cmn-tableResponsive">
+<table class="cmn-table mgt-30">
+	<thead>
+	<tr>
+		<th width="80">ID</th>
+		<th>メールアドレス</th>
+		<th width="100">操作</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	<% @users.each do |user| %>
+		<tr>
+			<td class="alignCenter"><%= user.id %></td>
+			<td><%= user.email %></td>
+			<td class="alignCenter"><%= link_to '詳細', [:managers, user], class: 'cmn-btn is-inline' %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+</div>
