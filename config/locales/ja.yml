@@ -1,6 +1,13 @@
 ---
 ja:
   activerecord:
+    attributes:
+      stamp_card:
+        name: 'スタンプカード名'
+        count: 'スタンプ数'
+        description: '説明文章'
+        start_at: '開催開始日'
+        end_at: '開催終了日'
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

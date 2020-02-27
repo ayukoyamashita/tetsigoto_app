@@ -28,7 +28,7 @@ class Managers::StampCardsController < Managers::BaseController
 
 		respond_to do |format|
 			if @stamp_card.save
-				format.html {redirect_to managers_stamp_cards_path, notice: 'Stamp card was successfully created.'}
+				format.html {redirect_to managers_stamp_cards_path, notice: 'スタンプカードを作成しました。'}
 			else
 				format.html {render :new}
 			end
@@ -40,7 +40,7 @@ class Managers::StampCardsController < Managers::BaseController
 	def update
 		respond_to do |format|
 			if @stamp_card.update(stamp_card_params)
-				format.html {redirect_to @stamp_card, notice: 'Stamp card was successfully updated.'}
+				format.html {redirect_to managers_stamp_cards_path, notice: 'スタンプカードを更新しました。'}
 				format.json {render :show, status: :ok, location: @stamp_card}
 			else
 				format.html {render :edit}
@@ -54,7 +54,7 @@ class Managers::StampCardsController < Managers::BaseController
 	def destroy
 		@stamp_card.destroy
 		respond_to do |format|
-			format.html {redirect_to managers_stamp_cards_url, notice: 'Stamp card was successfully destroyed.'}
+			format.html {redirect_to managers_stamp_cards_url, notice: 'スタンプカードを削除しました。'}
 			format.json {head :no_content}
 		end
 	end

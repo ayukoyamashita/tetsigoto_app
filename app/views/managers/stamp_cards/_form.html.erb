@@ -1,7 +1,7 @@
 <%= form_with(model: [:managers, stamp_card], local: true) do |form| %>
 	<% if stamp_card.errors.any? %>
-		<div id="error_explanation">
-			<h2><%= pluralize(stamp_card.errors.count, "error") %> prohibited this stamp_card from being saved:</h2>
+		<div class="cmn-alert">
+			<p>スタンプカードの保存に失敗しました。</p>
 
 			<ul>
 				<% stamp_card.errors.full_messages.each do |message| %>
@@ -10,7 +10,7 @@
 			</ul>
 		</div>
 	<% end %>
-	<dl class="cmn-form">
+	<dl class="cmn-form mgt-30">
 		<dt>スタンプカード名</dt>
 		<dd>
 			<%= form.text_field :name %>
