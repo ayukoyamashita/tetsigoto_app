@@ -66,3 +66,5 @@ gem 'devise_invitable'
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+gem 'validates_timeliness'

@@ -1,7 +1,7 @@
-<%= form_with(model: [:managers, stamp_card], local: true) do |form| %>
+<%= form_with(model: [:managers, stamp_card], local: true, class: 'stampCardForm') do |form| %>
 	<% if stamp_card.errors.any? %>
 		<div class="cmn-alert">
-			<p>スタンプカードの保存に失敗しました。</p>
+			<p class="mgt-0 textBold">スタンプカードの保存に失敗しました。</p>
 
 			<ul>
 				<% stamp_card.errors.full_messages.each do |message| %>
@@ -11,28 +11,28 @@
 		</div>
 	<% end %>
 	<dl class="cmn-form mgt-30">
-		<dt>スタンプカード名</dt>
+		<dt class="required">スタンプカード名</dt>
 		<dd>
-			<%= form.text_field :name %>
+			<%= form.text_field :name, required: true %>
 		</dd>
 	</dl>
 	<dl class="cmn-form">
-		<dt>説明文章</dt>
+		<dt class="required">説明文章</dt>
 		<dd>
-			<%= form.text_area :description %>
+			<%= form.text_area :description, required: true %>
 		</dd>
 	</dl>
 	<dl class="cmn-form">
-		<dt>スタンプ数</dt>
+		<dt class="required">スタンプ数</dt>
 		<dd>
-			<%= form.number_field :count, class: 'is-short' %>
+			<%= form.number_field :count, class: 'is-short', required: true %>
 		</dd>
 	</dl>
 	<dl class="cmn-form">
-		<dt>開催期間</dt>
+		<dt class="required">開催期間</dt>
 		<dd>
-			<%= form.text_field :start_at, class: 'is-short' %> 〜
-			<%= form.text_field :end_at, class: 'is-short' %>
+			<%= form.text_field :start_at, class: 'is-short', required: true %> 〜
+			<%= form.text_field :end_at, class: 'is-short', required: true %>
 		</dd>
 	</dl>
 
