@@ -10,6 +10,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
+    "flatpickr": "^4.6.3",
     "jsqr": "^1.2.0",
     "normalize.css": "^8.0.1",
     "turbolinks": "^5.2.0"
