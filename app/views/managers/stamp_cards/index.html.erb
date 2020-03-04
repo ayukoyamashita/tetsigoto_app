@@ -11,6 +11,7 @@
 			<th width="80">ID</th>
 			<th width="100">状態</th>
 			<th>名前</th>
+			<th>参加者</th>
 			<th width="250">操作</th>
 		</tr>
 		</thead>
@@ -19,8 +20,9 @@
 		<% @stamp_cards.each do |stamp_card| %>
 			<tr>
 				<td class="alignCenter"><%= stamp_card.id %></td>
-				<td class="alignCenter">開催中</td>
+				<td class="alignCenter"><%= stamp_card.status_string %></td>
 				<td><%= link_to stamp_card.name, [:managers, stamp_card] %></td>
+				<td class="alignCenter">10人</td>
 				<td class="alignCenter">
 					<%= link_to '詳細', [:managers, stamp_card], class: 'cmn-btn is-inline' %>
 					<%= link_to '編集', edit_managers_stamp_card_path(stamp_card), class: 'cmn-btn is-inline' %>

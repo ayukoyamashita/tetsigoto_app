@@ -4,7 +4,7 @@ class Managers::UsersController < Managers::BaseController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all.order(:id)
   end
 
   # GET /users/1

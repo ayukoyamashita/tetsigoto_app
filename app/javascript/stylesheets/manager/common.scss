@@ -47,9 +47,16 @@
     color: #fff;
   }
   nav {
+    & > ul {
+      list-style: none;
+      ul {
+        padding-left: 30px;
+        list-style-type: disc;
+      }
+    }
     ul {
-      padding-left: 25px;
       line-height: 2;
+      padding: 0;
     }
   }
 

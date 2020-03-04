@@ -4,7 +4,7 @@ class Managers::ManagersController < Managers::BaseController
   # GET /managers
   # GET /managers.json
   def index
-    @managers = Manager.all
+    @managers = Manager.all.order(:id)
   end
 
   # GET /managers/1

@@ -17,9 +17,34 @@
 </dl>
 <dl class="cmn-form">
 	<dt>開催期間</dt>
-	<dd><%= @stamp_card.start_at %>〜<%= @stamp_card.end_at %></dd>
+	<dd><%= l @stamp_card.start_at %> 〜 <%= l @stamp_card.end_at %></dd>
 </dl>
-<div class="cmn-btnContainer col2 mgt-30">
+<div class="cmn-btnContainer mgt-30">
 	<%= link_to '修正', edit_managers_stamp_card_path(@stamp_card), class: 'cmn-btn' %>
+</div>
+
+<h2 class="cmn-title mgt-60">参加者一覧</h2>
+
+<div class="cmn-tableResponsive">
+	<table class="cmn-table">
+		<thead>
+		<tr>
+			<th width="50">順位</th>
+			<th width="80">ユーザ</th>
+			<th width="100">スタンプ数</th>
+		</tr>
+		</thead>
+
+		<tbody>
+		<tr>
+			<td class="alignCenter">1</td>
+			<td>yamashita-ayuko@s-online.co.jp</td>
+			<td class="alignCenter">5 / 10 個</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="cmn-btnContainer mgt-30">
 	<%= link_to '戻る', managers_stamp_cards_path, class: 'cmn-btn' %>
 </div>

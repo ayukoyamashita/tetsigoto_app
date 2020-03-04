@@ -4,7 +4,7 @@ class Managers::StampCardsController < Managers::BaseController
 	# GET /stamp_cards
 	# GET /stamp_cards.json
 	def index
-		@stamp_cards = StampCard.all
+		@stamp_cards = StampCard.all.order(id: :desc)
 	end
 
 	# GET /stamp_cards/1
