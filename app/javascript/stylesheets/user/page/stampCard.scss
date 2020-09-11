@@ -15,7 +15,6 @@
     border-radius: $radius;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 
     &_date {
       text-align: center;
@@ -27,6 +26,11 @@
       width: 30%;
       margin-top: 10px;
       line-height: 1.2;
+      margin-right: 5%;
+
+      &:nth-of-type(3n) {
+        margin-right: 0;
+      }
 
       &:not(.is-stamped) {
         img {

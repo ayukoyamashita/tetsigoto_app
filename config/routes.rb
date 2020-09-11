@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
 	namespace :users do
 		get 'stamp_cards', to: 'stamp_card#index'
-		get 'stamp_card', to: 'stamp_card#detail'
+		get 'stamp_card/:stamp_card_id', to: 'stamp_card#detail', as: 'stamp_card'
+		post 'stamp_card/:stamp_card_id/stamp', to: 'stamp_card#stamp', as: 'stamp_card_stamp'
 	end
 end

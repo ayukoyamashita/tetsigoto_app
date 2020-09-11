@@ -1,18 +1,20 @@
 <div class="stampCardList">
 	<h2 class="stampCardList_title">開催中</h2>
 	<ul class="stampCardList_card">
-		<li>
-			<%= link_to users_stamp_card_path do %>
-				<img src="https://placehold.jp/300x300.png">
-				<p>スタンプカードのタイトル</p>
-			<%- end %>
-		</li>
+		<%- @active_stamp_cards.each do |stamp_card| %>
+			<li>
+				<%= link_to users_stamp_card_path(stamp_card.id) do %>
+					<img src="https://placehold.jp/300x300.png">
+					<p><%= stamp_card.name %></p>
+				<%- end %>
+			</li>
+		<%- end %>
 	</ul>
 
 	<h2 class="stampCardList_title mgt-60">常設</h2>
 	<ul class="stampCardList_card">
 		<li>
-			<%= link_to users_stamp_card_path do %>
+			<%= link_to users_stamp_card_path(1) do %>
 				<img src="https://placehold.jp/300x300.png">
 				<p>スタンプカードのタイトル</p>
 			<%- end %>
@@ -21,29 +23,13 @@
 
 	<h2 class="stampCardList_title mgt-60">アーカイブ</h2>
 	<ul class="stampCardList_card is-slim">
-		<li>
-			<%= link_to users_stamp_card_path do %>
-				<img src="https://placehold.jp/300x300.png">
-				<p>スタンプカードのタイトル</p>
-			<%- end %>
-		</li>
-		<li>
-			<%= link_to users_stamp_card_path do %>
-				<img src="https://placehold.jp/300x300.png">
-				<p>スタンプカードのタイトル</p>
-			<%- end %>
-		</li>
-		<li>
-			<%= link_to users_stamp_card_path do %>
-				<img src="https://placehold.jp/300x300.png">
-				<p>スタンプカードのタイトル</p>
-			<%- end %>
-		</li>
-		<li>
-			<%= link_to users_stamp_card_path do %>
-				<img src="https://placehold.jp/300x300.png">
-				<p>スタンプカードのタイトル</p>
-			<%- end %>
-		</li>
+		<%- @old_stamp_cards.each do |stamp_card| %>
+			<li>
+				<%= link_to users_stamp_card_path(stamp_card.id) do %>
+					<img src="https://placehold.jp/300x300.png">
+					<p><%= stamp_card.name %></p>
+				<%- end %>
+			</li>
+		<%- end %>
 	</ul>
 </div>

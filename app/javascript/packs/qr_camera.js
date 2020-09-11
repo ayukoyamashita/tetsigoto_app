@@ -53,6 +53,10 @@ function openQRCamera() {
 	reader.readAsDataURL(camera.files[0]);
 }
 
+function postStamp() {
+
+}
+
 function readQRCode(canvas, ctx) {
 	let {width, height} = getThumbnailSize(image);
 	canvas.setAttribute("width", width);
