@@ -190,6 +190,10 @@
       display: block;
     }
 
+    .el_loading.is-hide {
+      display: none;
+    }
+
     &_close {
       position: absolute;
       top: -10px;

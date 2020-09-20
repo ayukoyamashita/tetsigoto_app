@@ -11,13 +11,18 @@ class Users::StampCardController < Users::BaseController
 	end
 
 	def stamp
-		stamp_card = StampCard.find(params[:stamp_card_id])
+		unless /^teshigoto_stamp_card_id=\d$/.match?(params[:qr_decode])
+			render json: 'invalid qr code string', status: :forbidden
+			return
+		end
+		stamp_card_id = /\d$/.match(params[:qr_decode]).to_s
+		stamp_card = StampCard.find(stamp_card_id)
 		stamp = Stamp.new
 		stamp.user_id = current_user.id
 		stamp.stamp_card_id = stamp_card.id
 		respond_to do |format|
 			if stamp.save
-				format.json {render :show, status: :ok}
+				format.json {render json: {stamp_card_id: stamp_card_id, stamp_id: stamp.id}, status: :ok}
 			else
 				format.json {render json: stamp.errors, status: :unprocessable_entity}
 			end

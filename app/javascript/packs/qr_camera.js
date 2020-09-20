@@ -1,111 +1,93 @@
-let camera, canvas, qrDecode, success, fail, ctx, qrReadedDialog, qrReadedDialogLink, qrReadedDialogClose;
+import {StampCard} from "./stamp_card";
 
 document.addEventListener('turbolinks:load', () => {
-	camera = document.querySelector('input[data-camera]');
-	canvas = document.querySelector("[data-qr-result] canvas");
-	qrDecode = document.querySelector("[data-qr-decord]");
-	success = document.querySelector('[data-qr-result] .el_success');
-	fail = document.querySelector('[data-qr-result] .el_fail');
-	qrReadedDialog = document.querySelector('.qrReadedDialog');
-	qrReadedDialogLink = document.querySelector('.qrReadedDialog .el_link');
-	qrReadedDialogClose = document.querySelectorAll('.qrReadedDialog .el_close');
-
-	if (canvas) {
-		ctx = canvas.getContext("2d");
-	}
-
-	if (camera) {
-		camera.onchange = openQRCamera;
-		camera.onclick = resetCanvas;
-		qrReadedDialogLink.onclick = linkToStampCard;
-		qrReadedDialogClose.forEach(function(close) {
-			close.onclick = hideQrDialog;
+	let qrCamera = new QrCamera();
+	if (qrCamera.camera) {
+		qrCamera.camera.onchange = () => qrCamera.openQRCamera();
+		qrCamera.camera.onclick = () => qrCamera.resetCanvas();
+		qrCamera.qrReadedDialogLink.onclick = () => qrCamera.linkToStampCard();
+		qrCamera.qrReadedDialogClose.forEach(close => {
+			close.onclick = () => qrCamera.hideQrDialog();
 		});
 	}
 });
 
-function openQRCamera() {
-	let reader = new FileReader();
-	let image = new Image();
-	reader.onload = function (evt) {
-		image.onload = function () {
-			let {width, height} = getThumbnailSize(image);
-			canvas.setAttribute("width", width);
-			canvas.setAttribute("height", height);
+class QrCamera {
 
-			// カメラの映像をCanvasに複写
-			ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, width, height);
+	constructor() {
+		this.stampCard = new StampCard();
+		this.camera = document.querySelector('input[data-camera]');
+		this.canvas = document.querySelector("[data-qr-result] canvas");
+		this.fail = document.querySelector('[data-qr-result] .el_fail');
+		this.success = document.querySelector('[data-qr-result] .el_success');
+		this.qrReadedDialog = document.querySelector('.qrReadedDialog');
+		this.qrReadedDialogLink = document.querySelector('.qrReadedDialog .el_link');
+		this.qrReadedDialogClose = document.querySelectorAll('.qrReadedDialog .el_close');
 
-			// QRコード読み取り
-			const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-			const code = jsQR(imageData.data, canvas.width, canvas.height);
-
-			if (code == null) {
-				fail.classList.add('is-show');
-			} else {
-				success.classList.add('is-show');
-				qrDecode.value = code.data;
-			}
-			qrReadedDialog.classList.add('is-show');
-		};
-		image.src = evt.target.result;
-	};
-	reader.readAsDataURL(camera.files[0]);
-}
-
-function postStamp() {
-
-}
-
-function readQRCode(canvas, ctx) {
-	let {width, height} = getThumbnailSize(image);
-	canvas.setAttribute("width", width);
-	canvas.setAttribute("height", height);
-
-	// カメラの映像をCanvasに複写
-	ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, width, height);
-
-	// QRコード読み取り
-	const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-	const code = jsQR(imageData.data, canvas.width, canvas.height);
-
-	if (code == null) {
-		fail.classList.add('is-show');
-	} else {
-		success.classList.add('is-show');
-		qrDecode.value = code.data;
+		if (this.canvas) {
+			this.ctx = this.canvas.getContext("2d");
+		}
 	}
-}
 
-function resetCanvas() {
-	fail.classList.remove('is-show');
-	success.classList.remove('is-show');
-}
+	openQRCamera() {
+		let reader = new FileReader();
+		let image = new Image();
+		reader.onload = function (evt) {
+			image.onload = function () {
+				let {width, height} = this.getThumbnailSize(image);
+				this.canvas.setAttribute("width", width);
+				this.canvas.setAttribute("height", height);
 
-function getThumbnailSize(image) {
-	const THUMBNAIL_WIDTH = 500; // 画像リサイズ後の横の長さの最大値
-	const THUMBNAIL_HEIGHT = 500; // 画像リサイズ後の縦の長さの最大値
+				// カメラの映像をCanvasに複写
+				this.ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, width, height);
 
-	let w, h;
-	if (image.width > image.height) {
-		// 横長の画像は横のサイズを指定値にあわせる
-		let ratio = image.height / image.width;
-		w = THUMBNAIL_WIDTH;
-		h = THUMBNAIL_WIDTH * ratio;
-	} else {
-		// 縦長の画像は縦のサイズを指定値にあわせる
-		let ratio = image.width / image.height;
-		w = THUMBNAIL_HEIGHT * ratio;
-		h = THUMBNAIL_HEIGHT;
+				// QRコード読み取り
+				const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
+				const code = jsQR(imageData.data, this.canvas.width, this.canvas.height);
+
+				this.qrReadedDialog.classList.add('is-show');
+				if (code == null) {
+					this.fail.classList.add('is-show');
+				} else {
+					this.stampCard.setQrDecode(code.data);
+					this.stampCard.postStamp();
+				}
+			}.bind(this);
+			image.src = evt.target.result;
+		}.bind(this);
+		reader.readAsDataURL(this.camera.files[0]);
 	}
-	return {width: w, height: h};
-}
 
-function hideQrDialog() {
-	qrReadedDialog.classList.remove('is-show');
-}
+	resetCanvas() {
+		this.fail.classList.remove('is-show');
+		this.success.classList.remove('is-show');
+	}
 
-function linkToStampCard() {
-	hideQrDialog();
-	location.href = '/users/stamp_card#stampCard'
+	getThumbnailSize(image) {
+		const THUMBNAIL_WIDTH = 500; // 画像リサイズ後の横の長さの最大値
+		const THUMBNAIL_HEIGHT = 500; // 画像リサイズ後の縦の長さの最大値
+
+		let w, h;
+		if (image.width > image.height) {
+			// 横長の画像は横のサイズを指定値にあわせる
+			let ratio = image.height / image.width;
+			w = THUMBNAIL_WIDTH;
+			h = THUMBNAIL_WIDTH * ratio;
+		} else {
+			// 縦長の画像は縦のサイズを指定値にあわせる
+			let ratio = image.width / image.height;
+			w = THUMBNAIL_HEIGHT * ratio;
+			h = THUMBNAIL_HEIGHT;
+		}
+		return {width: w, height: h};
+	}
+
+	hideQrDialog() {
+		this.qrReadedDialog.classList.remove('is-show');
+	}
+
+	linkToStampCard() {
+		this.hideQrDialog();
+		location.href = `/users/stamp_card/${this.stampCard.id}#stampCard`
+	}
 }
