@@ -8,10 +8,12 @@
 	<h3>開催期間</h3>
 	<p><%= l @stamp_card.start_at %>〜<%= l @stamp_card.end_at %></p>
 
-	<label class="cmn-camera mgt-30">
-		<i class="fas fa-camera"></i> QRコードを読む
-		<input type="file" accept="image/*" capture="environment" data-camera="true">
-	</label>
+	<%- if @stamp_card.active? %>
+		<label class="cmn-camera mgt-30">
+			<i class="fas fa-camera"></i> QRコードを読む
+			<input type="file" accept="image/*" capture="environment" data-camera="true">
+		</label>
+	<%- end %>
 
 	<ul class="stampCard_card mgt-30" id="stampCard" data-id="<%= @stamp_card.id %>">
 		<%- @stamp_card.count.times do %>

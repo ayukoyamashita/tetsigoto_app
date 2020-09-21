@@ -18,8 +18,12 @@ class StampCard < ApplicationRecord
 		self.where('end_at < ?', Time.zone.now.to_date)
 	end
 
+	def active?
+		self.start_at <= Time.zone.today && Time.zone.today <= self.end_at
+	end
+
 	def complete?(user_id)
-		self.count <= got_stamps(user_id: user_id).count
+		self.count <= got_stamps(user_id).count
 	end
 
 	def got_stamps(user_id)
