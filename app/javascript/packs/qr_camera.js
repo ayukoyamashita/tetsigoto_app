@@ -18,7 +18,9 @@ class QrCamera {
 		this.stampCard = new StampCard();
 		this.camera = document.querySelector('input[data-camera]');
 		this.canvas = document.querySelector("[data-qr-result] canvas");
+		this.loading = document.querySelector('[data-qr-result] .el_loading');
 		this.fail = document.querySelector('[data-qr-result] .el_fail');
+		this.message = document.querySelector('[data-qr-result] .el_message');
 		this.success = document.querySelector('[data-qr-result] .el_success');
 		this.qrReadedDialog = document.querySelector('.qrReadedDialog');
 		this.qrReadedDialogLink = document.querySelector('.qrReadedDialog .el_link');
@@ -32,8 +34,8 @@ class QrCamera {
 	openQRCamera() {
 		let reader = new FileReader();
 		let image = new Image();
-		reader.onload = function (evt) {
-			image.onload = function () {
+		reader.onload = (evt) => {
+			image.onload = () => {
 				let {width, height} = this.getThumbnailSize(image);
 				this.canvas.setAttribute("width", width);
 				this.canvas.setAttribute("height", height);
@@ -47,14 +49,15 @@ class QrCamera {
 
 				this.qrReadedDialog.classList.add('is-show');
 				if (code == null) {
+					this.loading.classList.add('is-hide');
+					this.message.innerText = '写真内にQRコードが見つかりません。';
 					this.fail.classList.add('is-show');
 				} else {
-					this.stampCard.setQrDecode(code.data);
-					this.stampCard.postStamp();
+					StampCard.postStamp(this.stampCard, code.data);
 				}
-			}.bind(this);
+			};
 			image.src = evt.target.result;
-		}.bind(this);
+		};
 		reader.readAsDataURL(this.camera.files[0]);
 	}
 

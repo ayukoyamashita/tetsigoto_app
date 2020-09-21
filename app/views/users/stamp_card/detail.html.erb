@@ -13,16 +13,12 @@
 		<input type="file" accept="image/*" capture="environment" data-camera="true">
 	</label>
 
-	<ul class="stampCard_card mgt-30" id="stampCard">
-		<%- (0..@stamp_card.count - 1).each do |i| %>
-			<%- if @stamps[i].present? %>
-				<li class="is-stamped">
-					<%= image_tag asset_path 'miffy.png' %>
-					<p class="stampCard_card_date"><%= l(@stamps[i].created_at.to_date, format: :short) %></p>
-				</li>
-			<%- else %>
-				<li><%= image_tag asset_path 'miffy.png' %></li>
-			<%- end %>
+	<ul class="stampCard_card mgt-30" id="stampCard" data-id="<%= @stamp_card.id %>">
+		<%- @stamp_card.count.times do %>
+			<li>
+				<%= image_tag asset_path 'miffy.png' %>
+				<p class="stampCard_card_date"></p>
+			</li>
 		<%- end %>
 	</ul>
 </div>

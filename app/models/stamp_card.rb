@@ -1,4 +1,6 @@
 class StampCard < ApplicationRecord
+	has_many :stamps
+
 	validates :name, presence: true
 	validates :count, presence: true, numericality: { only_integer: true }
 	validates :description, presence: true
@@ -15,4 +17,13 @@ class StampCard < ApplicationRecord
 	def self.old_cards
 		self.where('end_at < ?', Time.zone.now.to_date)
 	end
+
+	def complete?(user_id)
+		self.count <= got_stamps(user_id: user_id).count
+	end
+
+	def got_stamps(user_id)
+		self.stamps.where(user_id: user_id)
+	end
+
 end
